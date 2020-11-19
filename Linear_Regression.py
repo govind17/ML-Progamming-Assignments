@@ -43,19 +43,19 @@ if __name__ == "__main__":
         #print(yhat)
         sse_prev = calculateSSE(Y, Yhat)
         #print(sse_prev)
-        print(0, ["{0:.6f}".format(val) for val in W_T.T[0]], sse_prev)
+        print(0, *["{0:.6f}".format(val) for val in W_T.T[0]], sse_prev, sep=',')
         #Calculating Gradient Descent using X, Y, W and Predicted value with mentioned learning rate 
         gradientDescent, W_T = calculateGD(W_T, X, Y, Yhat, learningRate)
         #print(gradientDescent, W)
         i = 1
-
+        
         while True:
             Yhat = calculatePredicatedValue(X, W_T)
             sse_new = calculateSSE(Y, Yhat)
             #print(sse_new)
             #print("inside while loop")
             #print(abs(sse_new - sse_prev))
-            print(i, W_T.T[0], sse_new)
+            print(i,*["{0:.6f}".format(val) for val in W_T.T[0]], sse_new, sep=',')
             if abs(sse_new - sse_prev) > threshold:
                 gradientDescent, W_T = calculateGD(W_T, X, Y, Yhat, learningRate)
                 i = i + 1
