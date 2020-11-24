@@ -20,12 +20,11 @@ def calculateGD(W, X, Y, Yhat, lr):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data")
+    parser.add_argument("--data",type=str)
     parser.add_argument("--eta", type=float)
     parser.add_argument("--threshold", type=float)
     args = parser.parse_args()
-    file_name, learningRate, threshold = args.data, args.eta, args.threshold
-    #print(file_name, learningRate, threshold)
+    file_name, learningRate, threshold = args.data, args.eta, args.threshold    #Reading the arguments
     with open(file_name) as dataFile:
         reader = csv.reader(dataFile, delimiter=',')
         X = []
@@ -36,10 +35,9 @@ if __name__ == "__main__":
         n = len(X)
         X = np.array(X).astype(float)
         Y = np.array(Y).astype(float)
-        W = np.zeros(X.shape[1]).astype(float)
-        # Transpose the weight matrix
-        W_T = W.reshape(X.shape[1], 1).round(4)
-        Yhat = calculatePredicatedValue(X, W_T)
+        W = np.zeros(X.shape[1]).astype(float)     #Initializing the weights
+        W_T = W.reshape(X.shape[1], 1).round(4)    # Transpose the weight matrix
+        Yhat = calculatePredicatedValue(X, W_T)    #Calculting the predicted 
         #print(yhat)
         sse_prev = calculateSSE(Y, Yhat)
         #print(sse_prev)
