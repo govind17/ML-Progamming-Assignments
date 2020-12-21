@@ -24,8 +24,8 @@ if __name__ == "__main__":
     parser.add_argument("--eta", type=float)
     parser.add_argument("--threshold", type=float)
     args = parser.parse_args()
-    file_name, learningRate, threshold = args.data, args.eta, args.threshold    #Reading the arguments
-    with open(file_name) as dataFile:
+    file_path, learningRate, threshold = args.data, args.eta, args.threshold    #Reading the arguments
+    with open(file_path) as dataFile:
         reader = csv.reader(dataFile, delimiter=',')
         X = []
         Y = []
