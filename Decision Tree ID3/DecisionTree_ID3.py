@@ -1,7 +1,6 @@
 import argparse
 import csv
 import numpy as np
-from pprint import pprint
 
 def entropy(target_col):
     """
@@ -42,4 +41,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     file_name = args.data                       #Reading the arguments
     with open(file_name) as dataFile:
-            
+            reader = csv.reader(dataFile, delimiter=',')
+            data = []
+            target = []
+            for row in reader:
+                data.append(row[:-1])
+                target.append([row[-1]])
+            for i in range(0,len(data)):
+                print(len(data),i)
