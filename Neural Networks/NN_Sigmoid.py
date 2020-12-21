@@ -8,7 +8,7 @@ def initialize_network():
 	network = list()
 	hidden_layer = [{'weights': [0.2,-0.3,0.4]}, {'weights': [-0.5,-0.1,-0.4]},{'weights': [0.3,0.2,0.1]}]
 	network.append(hidden_layer)
-	output_layer = {'weights':[-0.1,0.1,0.3,-0.4]}
+	output_layer = [{'weights':[-0.1,0.1,0.3,-0.4]}]
 	network.append(output_layer)
 	return network
 
@@ -95,8 +95,6 @@ if __name__ == "__main__":
         n_inputs = len(dataset[0]) - 1
         n_outputs = len(set([row[-1] for row in dataset]))
         network = initialize_network()
-        for layer in network:
-	        print(layer)
         train_network(network, dataset, 0.2, itr, n_outputs)
         
         '''for layer in network:
